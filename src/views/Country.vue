@@ -70,7 +70,7 @@ export default {
             this.countriesBorder=[];
             if (this.error === false) {
                 this.country.borders.forEach((countryBorderA3C, index) => 
-                this.axios.get(`https://restcountries.eu/rest/v2/alpha/${countryBorderA3C}?fields=name`)
+                this.axios.get(`https://restcountries.com/v2/alpha/${countryBorderA3C}?fields=name`)
                 .then((response) => {this.countriesBorder.splice(index, 0, {"name": response.data.name, "a3c": countryBorderA3C, "error": false})})
                 .catch(error => this.countriesBorder.splice(index, 0, {"name": countryBorderA3C, "a3c": countryBorderA3C, "error": error.message})))
             }
@@ -86,7 +86,7 @@ export default {
             return array.map(array => array[idxStr]).join(', ');
         },
         consumeAPI: function(a3c) {
-            this.axios.get('https://restcountries.eu/rest/v2/alpha/'+a3c)
+            this.axios.get('https://restcountries.com/v2/alpha/'+a3c)
             .then((response) => {(this.country = response.data); this.error = false;})
             .catch(error => {this.error = error} )
         }

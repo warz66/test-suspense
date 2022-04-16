@@ -26,7 +26,7 @@ export default {
     const countries = ref(null);
 
     try {
-        const countriesResponse = await fetch('https://restcountries.eu/rest/v2/all');
+        const countriesResponse = await fetch('https://restcountries.com/v2/all');
         countries.value = await countriesResponse.json();
         //setTimeout(function(){ console.log('lol') },10000)
     } catch (e) {
@@ -52,7 +52,7 @@ export default {
   mounted() {
     console.log(this.countries)
     //this.consumeAPI();
-    /*this.axios.get('https://restcountries.eu/rest/v2/all')
+    /*this.axios.get('https://restcountries.com/v2/all')
               .then((response) => {(this.countries = response.data); this.error = false})
               .catch(error => this.error = error)*/
   },
@@ -63,7 +63,7 @@ export default {
       return ((country.region === this.region || this.region === 'Filter by Region') && country.name.toLowerCase().includes(this.search.toLowerCase()));
     },
     consumeAPI: function() {
-        this.axios.get('https://restcountries.eu/rest/v2/all')
+        this.axios.get('https://restcountries.com/v2/all')
         .then((response) => {(this.countries = response.data); this.error = false;})
         .catch(error => {this.error = error} )
     }
