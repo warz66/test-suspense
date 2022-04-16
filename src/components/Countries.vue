@@ -4,7 +4,7 @@
         <p>{{error.message}}</p>
       </div>
       <div id="countries-box" v-else>
-          <AsyncCountryBox v-for="country in countries" :key="country.id" v-show="filter(country)" :country="country" />
+          <AsyncCountryBox v-for="country in countries" :key="country.id" :region="region" :search="search" v-show="filter(country)" :country="country" />
       </div>
     </section>
 </template>
@@ -38,7 +38,8 @@ export default {
   name: 'Home',
   props: {
     search: String,
-    region: String
+    region: String,
+    //forceRefresh: 0
   },
   data: function() {
     return {
@@ -50,7 +51,6 @@ export default {
     AsyncCountryBox
   },
   mounted() {
-    console.log(this.countries)
     //this.consumeAPI();
     /*this.axios.get('https://restcountries.com/v2/all')
               .then((response) => {(this.countries = response.data); this.error = false})

@@ -44,7 +44,7 @@
     </section>-->
     <Suspense>
       <template #default>
-        <Countries :region="region" :search="search"/>
+        <Countries :region="region" :search="search" />
       </template>
       <template #fallback>
         <div style="text-align:center;">Loading...</div>
@@ -99,6 +99,7 @@ export default {
     Countries
   },
   mounted() {
+    console.log(this.region);
     //console.log(this.countries);
     /*this.axios.get('https://restcountries.eu/rest/v2/all')
               .then((response) => {(this.countries = response.data); this.error = false})
@@ -108,9 +109,9 @@ export default {
     onClickOutside() {
       this.openSelect = false;
     },
-    filter: function(country) {
+    /*filter: function(country) {
       return ((country.region === this.region || this.region === 'Filter by Region') && country.name.toLowerCase().includes(this.search.toLowerCase()));
-    }
+    }*/
   }
 }
 </script>
